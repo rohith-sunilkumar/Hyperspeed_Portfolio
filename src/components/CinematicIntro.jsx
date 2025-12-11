@@ -276,15 +276,39 @@ const CinematicIntro = ({ onComplete }) => {
             {/* PART 2: Welcome Message */}
             <div ref={part2Ref} className="intro-part intro-part-2">
                 <h2 ref={welcomeRef} className="welcome-message">
-                    {'I turn ideas into responsive and reliable web applications'.split('').map((letter, index) => (
-                        <span
-                            key={index}
-                            className={`welcome-letter ${letter === ' ' ? 'space' : ''}`}
-                            data-text={letter}
-                        >
-                            {letter === ' ' ? '\u00A0' : letter}
-                        </span>
-                    ))}
+                    <span className="welcome-line">
+                        {'I turn ideas into'.split('').map((letter, index) => (
+                            <span
+                                key={index}
+                                className={`welcome-letter ${letter === ' ' ? 'space' : ''}`}
+                                data-text={letter}
+                            >
+                                {letter === ' ' ? '\u00A0' : letter}
+                            </span>
+                        ))}
+                    </span>
+                    <span className="welcome-line">
+                        {'responsive and reliable'.split('').map((letter, index) => (
+                            <span
+                                key={index + 100}
+                                className={`welcome-letter ${letter === ' ' ? 'space' : ''}`}
+                                data-text={letter}
+                            >
+                                {letter === ' ' ? '\u00A0' : letter}
+                            </span>
+                        ))}
+                    </span>
+                    <span className="welcome-line">
+                        {'web applications'.split('').map((letter, index) => (
+                            <span
+                                key={index + 200}
+                                className={`welcome-letter ${letter === ' ' ? 'space' : ''}`}
+                                data-text={letter}
+                            >
+                                {letter === ' ' ? '\u00A0' : letter}
+                            </span>
+                        ))}
+                    </span>
                 </h2>
             </div>
 
