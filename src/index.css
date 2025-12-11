@@ -53,3 +53,454 @@
 ::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(to bottom, #7C3AED, #9333EA);
 }
+
+/* Cinematic Intro Styles */
+.cinematic-intro {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #000000;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.light-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: transparent;
+  pointer-events: none;
+}
+
+.cinematic-title-container {
+  position: relative;
+  z-index: 10;
+  perspective: 1000px;
+  padding: 2rem;
+  background: transparent;
+}
+
+.cinematic-title {
+  font-size: clamp(3rem, 12vw, 8rem);
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-align: center;
+  color: #00f3ff;
+  position: relative;
+  display: inline-block;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  z-index: 15;
+  text-shadow:
+    0 0 20px rgba(0, 243, 255, 0.9),
+    0 0 40px rgba(0, 243, 255, 0.6),
+    0 0 60px rgba(0, 180, 255, 0.4);
+  filter: brightness(1.2);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.cinematic-title .letter {
+  display: inline-block;
+  transform-origin: center;
+  will-change: transform, opacity;
+  position: relative;
+  animation: glitch 3s infinite;
+}
+
+.cinematic-title .letter::before,
+.cinematic-title .letter::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.cinematic-title .letter::before {
+  animation: glitchTop 2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  transform: translate(-2px, -2px);
+  text-shadow: 2px 0 #ff00de;
+}
+
+.cinematic-title .letter::after {
+  animation: glitchBottom 2.5s infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  transform: translate(2px, 2px);
+  text-shadow: -2px 0 #00fff9;
+}
+
+@keyframes glitch {
+
+  0%,
+  90%,
+  100% {
+    transform: translate(0);
+  }
+
+  92% {
+    transform: translate(-2px, 2px);
+  }
+
+  94% {
+    transform: translate(2px, -2px);
+  }
+
+  96% {
+    transform: translate(-2px, -2px);
+  }
+
+  98% {
+    transform: translate(2px, 2px);
+  }
+}
+
+@keyframes glitchTop {
+
+  0%,
+  90%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  91% {
+    transform: translate(-3px, -3px);
+    opacity: 0.8;
+  }
+
+  93% {
+    transform: translate(3px, 2px);
+    opacity: 0;
+  }
+}
+
+@keyframes glitchBottom {
+
+  0%,
+  85%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0;
+  }
+
+  87% {
+    transform: translate(3px, 3px);
+    opacity: 0.8;
+  }
+
+  89% {
+    transform: translate(-2px, -3px);
+    opacity: 0;
+  }
+}
+
+.cinematic-title .letter.space {
+  background: transparent !important;
+  color: transparent;
+  text-shadow: none;
+}
+
+.cinematic-title .title-line {
+  display: block;
+  text-align: center;
+}
+
+.light-glint {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.8) 50%,
+      transparent 100%);
+  pointer-events: none;
+  z-index: 20;
+  filter: blur(2px);
+  transform: skewX(-20deg);
+}
+
+@media (max-width: 768px) {
+  .cinematic-title {
+    letter-spacing: 0.1em;
+  }
+
+  .cinematic-title-container {
+    padding: 1rem;
+  }
+}
+
+.cinematic-subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-align: center;
+  color: #00d4ff;
+  margin-top: 1.5rem;
+  opacity: 0;
+  text-transform: uppercase;
+  text-shadow:
+    0 0 10px rgba(0, 212, 255, 0.8),
+    0 0 20px rgba(0, 212, 255, 0.5);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.transition-flash {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  opacity: 0;
+  z-index: 30;
+  pointer-events: none;
+}
+
+/* Holographic Grid Floor */
+.holo-grid {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background-image:
+    linear-gradient(rgba(0, 243, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 243, 255, 0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: bottom;
+  opacity: 0.4;
+  pointer-events: none;
+  animation: gridPulse 3s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
+}
+
+/* Cyber Fog/Mist */
+.cyber-fog {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top,
+      rgba(0, 180, 255, 0.1) 0%,
+      rgba(0, 243, 255, 0.05) 30%,
+      transparent 100%);
+  pointer-events: none;
+  animation: fogDrift 8s ease-in-out infinite;
+}
+
+@keyframes fogDrift {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+
+  50% {
+    opacity: 0.8;
+    transform: translateY(-10px);
+  }
+}
+
+/* Holographic Scanlines */
+.holo-scanlines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(0deg,
+      rgba(0, 243, 255, 0.03) 0px,
+      rgba(0, 243, 255, 0.03) 1px,
+      transparent 1px,
+      transparent 2px);
+  pointer-events: none;
+  animation: scanlineMove 8s linear infinite;
+  z-index: 25;
+}
+
+@keyframes scanlineMove {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(20px);
+  }
+}
+
+/* Intro Parts */
+.intro-part {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  z-index: 15;
+}
+
+.intro-part-2 {
+  opacity: 0;
+}
+
+/* Welcome Message */
+.welcome-message {
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 300;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: #00f3ff;
+  text-shadow:
+    0 0 15px rgba(0, 243, 255, 0.8),
+    0 0 30px rgba(0, 243, 255, 0.6),
+    0 0 45px rgba(0, 180, 255, 0.4);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  padding: 0 2rem;
+  line-height: 1.4;
+  animation: textGlow 3s ease-in-out infinite, textFloat 4s ease-in-out infinite, textFlicker 5s infinite;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Pulsing glow animation */
+@keyframes textGlow {
+
+  0%,
+  100% {
+    text-shadow:
+      0 0 15px rgba(0, 243, 255, 0.8),
+      0 0 30px rgba(0, 243, 255, 0.6),
+      0 0 45px rgba(0, 180, 255, 0.4);
+    filter: brightness(1);
+  }
+
+  50% {
+    text-shadow:
+      0 0 20px rgba(0, 243, 255, 1),
+      0 0 40px rgba(0, 243, 255, 0.8),
+      0 0 60px rgba(0, 180, 255, 0.6),
+      0 0 80px rgba(0, 180, 255, 0.4);
+    filter: brightness(1.3);
+  }
+}
+
+/* Subtle floating animation */
+@keyframes textFloat {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Subtle flicker effect */
+@keyframes textFlicker {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  93% {
+    opacity: 1;
+  }
+
+  94% {
+    opacity: 0.92;
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  96% {
+    opacity: 0.95;
+  }
+
+  97% {
+    opacity: 1;
+  }
+}
+
+/* Welcome message letter styling with glitch effects */
+.welcome-message .welcome-letter {
+  display: inline-block;
+  position: relative;
+  animation: glitch 3s infinite;
+}
+
+.welcome-message .welcome-letter.space {
+  background: transparent !important;
+  color: transparent;
+  text-shadow: none;
+}
+
+.welcome-message .welcome-letter::before,
+.welcome-message .welcome-letter::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.8;
+}
+
+.welcome-message .welcome-letter::before {
+  animation: glitchTop 2s infinite;
+  clip-path: polygon(0 0, 100% 0, 100% 33%, 0 33%);
+  transform: translate(-2px, -2px);
+  text-shadow: 2px 0 #ff00de;
+}
+
+.welcome-message .welcome-letter::after {
+  animation: glitchBottom 2.5s infinite;
+  clip-path: polygon(0 67%, 100% 67%, 100% 100%, 0 100%);
+  transform: translate(2px, 2px);
+  text-shadow: -2px 0 #00fff9;
+}
