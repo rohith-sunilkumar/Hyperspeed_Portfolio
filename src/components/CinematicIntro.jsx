@@ -22,6 +22,9 @@ const CinematicIntro = ({ onComplete }) => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext('2d');
         let animationFrameId;
+        let lastFrameTime = 0;
+        const targetFPS = 30;
+        const frameInterval = 1000 / targetFPS;
 
         // Set canvas size
         const resizeCanvas = () => {
@@ -43,7 +46,7 @@ const CinematicIntro = ({ onComplete }) => {
                 this.size = Math.random() * 2 + 0.5;
                 this.speedX = (Math.random() - 0.5) * 0.3;
                 this.speedY = (Math.random() - 0.5) * 0.3;
-                this.opacity = Math.random() * 0.5 + 0.2;
+                this.opacity = Math.random() * 0.3 + 0.2; // Reduced max opacity
             }
 
             update() {
@@ -65,21 +68,26 @@ const CinematicIntro = ({ onComplete }) => {
             }
         }
 
-        // Create particles
-        const particles = Array.from({ length: 80 }, () => new Particle());
+        // Create particles - reduced from 80 to 40
+        const particles = Array.from({ length: 40 }, () => new Particle());
 
-        // Animation loop for particles
-        const animateParticles = () => {
+        // Animation loop for particles with frame throttling
+        const animateParticles = (currentTime) => {
+            animationFrameId = requestAnimationFrame(animateParticles);
+
+            const elapsed = currentTime - lastFrameTime;
+            if (elapsed < frameInterval) return;
+
+            lastFrameTime = currentTime - (elapsed % frameInterval);
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             particles.forEach(particle => {
                 particle.update();
                 particle.draw();
             });
-
-            animationFrameId = requestAnimationFrame(animateParticles);
         };
-        animateParticles();
+        animateParticles(0);
 
         // GSAP Timeline
         const tl = gsap.timeline({
