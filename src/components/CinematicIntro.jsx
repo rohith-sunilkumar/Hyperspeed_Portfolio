@@ -61,7 +61,7 @@ const CinematicIntro = ({ onComplete }) => {
             }
 
             draw() {
-                ctx.fillStyle = `rgba(0, 243, 255, ${this.opacity})`;
+                ctx.fillStyle = `rgba(167, 139, 250, ${this.opacity})`;
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
                 ctx.fill();
