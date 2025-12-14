@@ -228,7 +228,6 @@
       transparent 100%);
   pointer-events: none;
   z-index: 20;
-  filter: blur(2px);
   transform: skewX(-20deg);
 }
 
