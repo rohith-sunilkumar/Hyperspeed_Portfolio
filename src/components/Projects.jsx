@@ -1,11 +1,36 @@
-import { FaGithub, FaExternalLinkAlt, FaRocket, FaBrain, FaComments } from 'react-icons/fa';
-import { SiReact, SiNodedotjs, SiMongodb, SiTensorflow, SiSocketdotio, SiTailwindcss } from 'react-icons/si';
+import { FaGithub, FaExternalLinkAlt, FaRocket, FaBrain, FaComments, FaShoppingCart } from 'react-icons/fa';
+import { SiReact, SiNodedotjs, SiMongodb, SiTensorflow, SiSocketdotio, SiTailwindcss, SiExpress, SiRedux } from 'react-icons/si';
 import useScrollAnimation from '../hooks/useScrollAnimation';
 
 const Projects = () => {
     const [sectionRef, isVisible] = useScrollAnimation({ threshold: 0.05 });
 
     const projects = [
+        {
+            title: 'ShopHub - E-Commerce Platform',
+            subtitle: 'Full-Stack MERN Marketplace',
+            description: 'Comprehensive, production-ready e-commerce platform with multi-role system featuring customer portal, seller dashboard, and admin panel with modern UI/UX and robust backend architecture.',
+            icon: <FaShoppingCart className="text-5xl" />,
+            gradient: 'from-orange-400 via-red-400 to-pink-400',
+            technologies: [
+                { name: 'React 18', icon: <SiReact />, color: 'bg-cyan-100 text-cyan-700' },
+                { name: 'Node.js', icon: <SiNodedotjs />, color: 'bg-green-100 text-green-700' },
+                { name: 'Express.js', icon: <SiExpress />, color: 'bg-gray-100 text-gray-700' },
+                { name: 'MongoDB', icon: <SiMongodb />, color: 'bg-emerald-100 text-emerald-700' },
+                { name: 'Redux Toolkit', icon: <SiRedux />, color: 'bg-purple-100 text-purple-700' },
+                { name: 'Tailwind', icon: <SiTailwindcss />, color: 'bg-sky-100 text-sky-700' },
+            ],
+            features: [
+                'Multi-Role System (Customer/Seller/Admin)',
+                'Shopping Cart & Secure Checkout',
+                'Seller Analytics Dashboard',
+                'JWT-Based RBAC Authentication',
+                'Real-time Inventory Management',
+            ],
+            impact: 'Scalable e-commerce solution with role-based access control, comprehensive order tracking, seller analytics with CSV export, and production-ready features demonstrating full-stack expertise.',
+            github: 'https://github.com',
+            live: null,
+        },
         {
             title: 'Smart City Civic Issue Management',
             subtitle: 'AI-Powered Urban Infrastructure Platform',
@@ -93,49 +118,47 @@ const Projects = () => {
                     </p>
                 </div>
 
-                {/* Projects Grid */}
-                <div className="grid lg:grid-cols-2 gap-6 mb-8">
-                    {projects.slice(0, 2).map((project, index) => (
+                {/* Projects Grid - Single Row */}
+                <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-8 group/container">
+                    {projects.map((project, index) => (
                         <div
                             key={index}
-                            className={`group bg-gray-800/40 backdrop-blur-xl rounded-3xl shadow-lg hover:shadow-2xl border border-gray-700/30 overflow-hidden transition-all duration-700 hover:scale-[1.02] ${isVisible
-                                ? 'opacity-100 translate-x-0 scale-100'
-                                : index % 2 === 0
-                                    ? 'opacity-0 -translate-x-20 scale-95'
-                                    : 'opacity-0 translate-x-20 scale-95'
+                            className={`group/card bg-gray-800/40 backdrop-blur-xl rounded-3xl shadow-lg hover:shadow-2xl border border-gray-700/30 overflow-hidden transition-all duration-500 lg:group-hover/container:[&:not(:hover)]:flex-[0.8] lg:hover:flex-[1.5] lg:flex-1 hover:scale-105 hover:-translate-y-2 hover:shadow-purple-500/20 hover:border-purple-500/50 ${isVisible
+                                ? 'opacity-100 translate-y-0'
+                                : 'opacity-0 translate-y-20'
                                 }`}
-                            style={{ transitionDelay: `${200 + index * 200}ms` }}
+                            style={{ transitionDelay: `${200 + index * 100}ms` }}
                         >
                             {/* Project Thumbnail */}
-                            <div className={`relative h-48 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden`}>
+                            <div className={`relative h-40 bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden`}>
                                 <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                                <div className="relative z-10 text-white drop-shadow-lg transform group-hover:scale-110 transition-transform duration-500">
+                                <div className="relative z-10 text-white drop-shadow-lg transform group-hover/card:scale-110 transition-transform duration-500">
                                     {project.icon}
                                 </div>
                                 {/* Floating Orbs */}
-                                <div className="absolute top-4 right-4 w-16 h-16 bg-white/20 rounded-full blur-xl animate-pulse-slow"></div>
-                                <div className="absolute bottom-4 left-4 w-20 h-20 bg-white/20 rounded-full blur-xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
+                                <div className="absolute top-4 right-4 w-12 h-12 bg-white/20 rounded-full blur-xl animate-pulse-slow"></div>
+                                <div className="absolute bottom-4 left-4 w-16 h-16 bg-white/20 rounded-full blur-xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
                             </div>
 
                             {/* Card Content */}
-                            <div className="p-6">
+                            <div className="p-4">
                                 {/* Title */}
-                                <h3 className="text-2xl font-bold text-gray-100 mb-1">{project.title}</h3>
-                                <p className="text-base font-medium text-purple-400 mb-3">{project.subtitle}</p>
+                                <h3 className="text-lg font-bold text-gray-100 mb-1">{project.title}</h3>
+                                <p className="text-sm font-medium text-purple-400 mb-2">{project.subtitle}</p>
 
                                 {/* Description */}
-                                <p className="text-gray-300 text-base leading-relaxed mb-4 font-light">
+                                <p className="text-gray-300 text-sm leading-relaxed mb-3 font-light line-clamp-3 group-hover/card:line-clamp-none">
                                     {project.description}
                                 </p>
 
                                 {/* Features */}
-                                <div className="mb-4">
-                                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2">Key Features</h4>
-                                    <div className="flex flex-wrap gap-1.5">
+                                <div className="mb-3">
+                                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Key Features</h4>
+                                    <div className="flex flex-wrap gap-1">
                                         {project.features.map((feature, i) => (
                                             <span
                                                 key={i}
-                                                className="px-2.5 py-1 bg-purple-900/30 text-purple-300 rounded-full text-sm font-medium border border-purple-500/50"
+                                                className="px-2 py-0.5 bg-purple-900/30 text-purple-300 rounded-full text-xs font-medium border border-purple-500/50"
                                             >
                                                 {feature}
                                             </span>
@@ -144,38 +167,38 @@ const Projects = () => {
                                 </div>
 
                                 {/* Impact Box */}
-                                <div className="mb-4 p-3 bg-blue-900/20 rounded-xl border-l-3 border-l-4 border-blue-400">
-                                    <p className="text-sm text-gray-200 font-light leading-relaxed">
+                                <div className="mb-3 p-2 bg-blue-900/20 rounded-xl border-l-3 border-l-4 border-blue-400">
+                                    <p className="text-xs text-gray-200 font-light leading-relaxed">
                                         <span className="font-semibold text-blue-400">Impact:</span> {project.impact}
                                     </p>
                                 </div>
 
                                 {/* Tech Stack */}
-                                <div className="mb-5">
-                                    <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-2">Tech Stack</h4>
-                                    <div className="flex flex-wrap gap-2">
+                                <div className="mb-4">
+                                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Tech Stack</h4>
+                                    <div className="flex flex-wrap gap-1.5">
                                         {project.technologies.map((tech, i) => (
                                             <div
                                                 key={i}
-                                                className={`flex items-center gap-1.5 px-2.5 py-1.5 ${tech.color} rounded-lg text-xs font-medium transition-transform hover:scale-105`}
+                                                className={`flex items-center gap-1 px-2 py-1 ${tech.color} rounded-lg text-xs font-medium transition-transform hover:scale-105`}
                                             >
-                                                <span className="text-sm">{tech.icon}</span>
-                                                <span>{tech.name}</span>
+                                                <span className="text-xs">{tech.icon}</span>
+                                                <span className="text-xs">{tech.name}</span>
                                             </div>
                                         ))}
                                     </div>
                                 </div>
 
                                 {/* CTA Buttons */}
-                                <div className="flex gap-3">
+                                <div className="flex gap-2">
                                     {project.github && (
                                         <a
                                             href={project.github}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-900 text-white rounded-xl font-semibold text-sm hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-gray-900 text-white rounded-xl font-semibold text-xs hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-lg"
                                         >
-                                            <FaGithub /> GitHub Repo
+                                            <FaGithub /> GitHub
                                         </a>
                                     )}
                                     {project.live && (
@@ -183,9 +206,9 @@ const Projects = () => {
                                             href={project.live}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-sm hover:shadow-lg transition-all duration-300 hover:scale-105"
+                                            className="flex-1 flex items-center justify-center gap-1.5 px-3 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-xs hover:shadow-lg transition-all duration-300 hover:scale-105"
                                         >
-                                            <FaExternalLinkAlt /> View Project
+                                            <FaExternalLinkAlt /> Live
                                         </a>
                                     )}
                                 </div>
@@ -194,76 +217,6 @@ const Projects = () => {
                     ))}
                 </div>
 
-                {/* Third Project - Full Width */}
-                {projects.slice(2, 3).map((project, index) => (
-                    <div
-                        key={index + 2}
-                        className={`group bg-gray-800/40 backdrop-blur-xl rounded-3xl shadow-lg hover:shadow-2xl border border-gray-700/30 overflow-hidden transition-all duration-700 hover:scale-[1.01] mb-8 ${isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-20 scale-95'
-                            }`}
-                        style={{ transitionDelay: '600ms' }}
-                    >
-                        <div className="grid md:grid-cols-5 gap-0">
-                            {/* Project Thumbnail */}
-                            <div className={`md:col-span-2 relative h-64 md:h-auto bg-gradient-to-br ${project.gradient} flex items-center justify-center overflow-hidden`}>
-                                <div className="absolute inset-0 bg-white/10 backdrop-blur-sm"></div>
-                                <div className="relative z-10 text-white drop-shadow-lg transform group-hover:scale-110 transition-transform duration-500">
-                                    {project.icon}
-                                </div>
-                                <div className="absolute top-4 right-4 w-16 h-16 bg-white/20 rounded-full blur-xl animate-pulse-slow"></div>
-                                <div className="absolute bottom-4 left-4 w-20 h-20 bg-white/20 rounded-full blur-xl animate-pulse-slow" style={{ animationDelay: '1s' }}></div>
-                            </div>
-
-                            {/* Card Content */}
-                            <div className="md:col-span-3 p-6">
-                                <h3 className="text-2xl font-bold text-gray-100 mb-1">{project.title}</h3>
-                                <p className="text-base font-medium text-purple-400 mb-3">{project.subtitle}</p>
-                                <p className="text-gray-300 text-base leading-relaxed mb-4 font-light">{project.description}</p>
-
-                                <div className="mb-4">
-                                    <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Key Features</h4>
-                                    <div className="flex flex-wrap gap-1.5">
-                                        {project.features.map((feature, i) => (
-                                            <span key={i} className="px-2.5 py-1 bg-purple-50 text-purple-700 rounded-full text-xs font-medium border border-purple-100">
-                                                {feature}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="mb-4 p-3 bg-gradient-to-r from-blue-50 to-purple-50 rounded-xl border-l-4 border-blue-400">
-                                    <p className="text-xs text-gray-700 font-light leading-relaxed">
-                                        <span className="font-semibold text-blue-700">Impact:</span> {project.impact}
-                                    </p>
-                                </div>
-
-                                <div className="mb-5">
-                                    <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Tech Stack</h4>
-                                    <div className="flex flex-wrap gap-2">
-                                        {project.technologies.map((tech, i) => (
-                                            <div key={i} className={`flex items-center gap-1.5 px-2.5 py-1.5 ${tech.color} rounded-lg text-xs font-medium transition-transform hover:scale-105`}>
-                                                <span className="text-sm">{tech.icon}</span>
-                                                <span>{tech.name}</span>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="flex gap-3">
-                                    {project.github && (
-                                        <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gray-900 text-white rounded-xl font-semibold text-sm hover:bg-gray-800 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                                            <FaGithub /> GitHub Repo
-                                        </a>
-                                    )}
-                                    {project.live && (
-                                        <a href={project.live} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-xl font-semibold text-sm hover:shadow-lg transition-all duration-300 hover:scale-105">
-                                            <FaExternalLinkAlt /> View Project
-                                        </a>
-                                    )}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
 
                 {/* Technical Expertise */}
                 <div className={`bg-gray-800/40 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-700/30 p-8 transition-all duration-700 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
