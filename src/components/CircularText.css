@@ -1,0 +1,50 @@
+.circular-text {
+  border-radius: 50%;
+  width: 200px;
+  position: relative;
+  height: 200px;
+  font-weight: 900;
+  color: #9ca3af;
+  text-align: center;
+  cursor: pointer;
+  transform-origin: 50% 50%;
+  -webkit-transform-origin: 50% 50%;
+}
+
+.circular-text span {
+  position: absolute;
+  display: inline-block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  font-size: 24px;
+  transition: all 0.5s cubic-bezier(0, 0, 0, 1);
+}
+
+/* Hero-specific size override */
+.hero-circular-text {
+  width: 340px;
+  height: 340px;
+  color: #d1d5db;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.hero-circular-text span {
+  font-size: 13px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+@media (min-width: 768px) {
+  .hero-circular-text {
+    width: 420px;
+    height: 420px;
+  }
+
+  .hero-circular-text span {
+    font-size: 15px;
+  }
+}
