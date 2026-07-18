@@ -30,7 +30,7 @@ const Navbar = () => {
         >
             <div className="w-full px-4 sm:px-8 lg:px-12">
                 <div className="flex justify-between items-center h-16">
-                    <div className="text-2xl font-bold gradient-text cursor-pointer" onClick={() => scrollToSection('home')}>
+                    <div className="text-xl min-[360px]:text-2xl font-bold gradient-text cursor-pointer" onClick={() => scrollToSection('home')}>
                         Fullstack Developer
                     </div>
 

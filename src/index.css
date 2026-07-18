@@ -11,6 +11,8 @@
 
   body {
     @apply bg-white min-h-screen text-gray-900;
+    overflow-x: hidden;
+    width: 100%;
   }
 }
 
@@ -117,4 +119,26 @@
 
 .animate-counter-spin {
   animation: counterSpin 20s linear infinite;
+}
+
+/* Orbit Ring Responsive Layout */
+.orbit-container {
+  --orbit-radius: 120px;
+  --orbit-item-margin: -22px;
+  --profile-size: 176px;
+}
+
+@media (min-width: 360px) {
+  .orbit-container {
+    --orbit-radius: 145px;
+    --profile-size: 224px;
+  }
+}
+
+@media (min-width: 768px) {
+  .orbit-container {
+    --orbit-radius: 240px;
+    --orbit-item-margin: -24px;
+    --profile-size: 288px;
+  }
 }

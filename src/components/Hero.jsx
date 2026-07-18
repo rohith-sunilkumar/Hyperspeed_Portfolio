@@ -141,11 +141,11 @@ const Hero = () => {
                     <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
                         {/* Left Content */}
-                        <div className={`space-y-8 transition-all duration-1000 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <div className={`order-2 lg:order-1 space-y-8 transition-all duration-1000 delay-200 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
                             {/* Headline */}
                             <div>
-                                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-gray-900 leading-[1.1]">
+                                <h1 className="text-4xl min-[360px]:text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-extrabold tracking-tight text-gray-900 leading-[1.1]">
                                     Rohith
                                     <br />
                                     <span className="gradient-text">Sunilkumar</span>
@@ -179,6 +179,18 @@ const Hero = () => {
                                 </div>
                             </div>
 
+                            {/* Mobile-only Social row */}
+                            <div className="flex lg:hidden items-center gap-5 pt-1">
+                                <a href="https://github.com" target="_blank" rel="noopener noreferrer"
+                                    className="text-gray-400 hover:text-gray-900 transition-colors duration-300" title="GitHub">
+                                    <FaGithub size={20} />
+                                </a>
+                                <a href="https://www.linkedin.com/in/rohithsunilkumar" target="_blank" rel="noopener noreferrer"
+                                    className="text-gray-400 hover:text-blue-600 transition-colors duration-300" title="LinkedIn">
+                                    <FaLinkedin size={20} />
+                                </a>
+                            </div>
+
                             {/* CTA Buttons */}
                             <div className="flex flex-col sm:flex-row gap-4 pt-2">
                                 <button
@@ -197,8 +209,8 @@ const Hero = () => {
                                 </a>
                             </div>
 
-                            {/* Social row */}
-                            <div className="flex items-center gap-5 pt-2">
+                            {/* Social row (desktop only) */}
+                            <div className="hidden lg:flex items-center gap-5 pt-2">
                                 <a href="https://github.com" target="_blank" rel="noopener noreferrer"
                                     className="text-gray-400 hover:text-gray-900 transition-colors duration-300" title="GitHub">
                                     <FaGithub size={20} />
@@ -211,10 +223,16 @@ const Hero = () => {
                         </div>
 
                         {/* Right Visual */}
-                        <div className={`relative flex items-center justify-center transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+                        <div className={`orbit-container order-1 lg:order-2 relative flex items-center justify-center pt-14 pb-14 lg:pt-0 lg:pb-0 transition-all duration-1000 delay-500 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
 
                             {/* Spinning orbit ring with icons */}
-                            <div className="absolute w-[340px] h-[340px] md:w-[420px] md:h-[420px] animate-spin-slow">
+                            <div 
+                                className="absolute inset-0 m-auto animate-spin-slow"
+                                style={{
+                                    width: 'calc(var(--orbit-radius) * 2)',
+                                    height: 'calc(var(--orbit-radius) * 2)',
+                                }}
+                            >
                                 {orbitIcons.map((item, i) => {
                                     const angle = (360 / orbitIcons.length) * i;
                                     return (
@@ -222,9 +240,9 @@ const Hero = () => {
                                             key={i}
                                             className="absolute top-1/2 left-1/2"
                                             style={{
-                                                transform: `rotate(${angle}deg) translateX(${170}px) rotate(-${angle}deg)`,
-                                                marginTop: '-22px',
-                                                marginLeft: '-22px',
+                                                transform: `rotate(${angle}deg) translateX(var(--orbit-radius)) rotate(-${angle}deg)`,
+                                                marginTop: 'var(--orbit-item-margin)',
+                                                marginLeft: 'var(--orbit-item-margin)',
                                             }}
                                         >
                                             {/* Counter-rotate so icons stay upright */}
@@ -244,7 +262,13 @@ const Hero = () => {
                             {/* Photo container - Round */}
                             <div className="relative group z-10">
                                 <div className="absolute -inset-2 bg-black rounded-full opacity-[0.05] group-hover:opacity-[0.08] blur-xl transition-opacity duration-700"></div>
-                                <div className="relative w-56 h-56 md:w-72 md:h-72 rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-gray-300/50">
+                                <div 
+                                    className="relative rounded-full overflow-hidden border-4 border-white shadow-2xl shadow-gray-300/50"
+                                    style={{
+                                        width: 'var(--profile-size)',
+                                        height: 'var(--profile-size)',
+                                    }}
+                                >
                                     <img
                                         src={me}
                                         alt="Rohith Sunilkumar"

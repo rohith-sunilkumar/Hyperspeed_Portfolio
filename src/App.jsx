@@ -10,7 +10,7 @@ function App() {
   return (
     <Fragment>
       {/* Main Content */}
-      <div className="min-h-screen relative bg-white text-gray-900">
+      <div className="min-h-screen relative bg-white text-gray-900 overflow-x-hidden">
         <Navbar />
         <Hero />
         <About />
