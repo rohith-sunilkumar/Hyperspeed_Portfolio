@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: #fdfbf8;
+    --color-secondary: #2d62ff;
+    --color-accent: #ee4b2b;
+    --color-neutral-0: #000000;
+    --color-neutral-100: #121212;
+    --color-neutral-300: #333333;
+    --color-neutral-500: #7b7b7a;
+    --color-neutral-400: #999999;
+    --color-neutral-200: #d9d9d9;
+    
+    --radius-sm: 1px;
+    --radius-md: 13px;
+    --radius-lg: 16px;
+    --radius-full: 100px;
+  }
+
+  html {
+    @apply scroll-smooth;
+    scroll-padding-top: 5rem;
+    background-color: #fdfbf8;
+  }
+
+  body {
+    background-color: #fdfbf8;
+    color: #333333;
+    font-family: var(--font-plus-jakarta), 'Neue Montreal', 'Inter', system-ui, sans-serif;
+    min-height: 100vh;
+    overflow-x: clip;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .brand-card {
+    background-color: #fdfbf8;
+    border: 1px solid #d9d9d9;
+    border-radius: 16px;
+    padding: 1.5rem;
+    transition: all 400ms ease;
+  }
+
+  .brand-card:hover {
+    border-color: #2d62ff;
+    transform: translateY(-2px);
+  }
+
+  .btn-brand-primary {
+    background-color: #000000;
+    color: #fdfbf8;
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-weight: 500;
+    transition: all 200ms ease;
+  }
+
+  .btn-brand-primary:hover {
+    background-color: #2d62ff;
+    color: #fdfbf8;
+    transform: translateY(-1px);
+  }
+
+  .btn-brand-secondary {
+    background-color: #fdfbf8;
+    color: #333333;
+    border: 1px solid #d9d9d9;
+    padding: 0.75rem 1.75rem;
+    border-radius: 100px;
+    font-weight: 500;
+    transition: all 200ms ease;
+  }
+
+  .btn-brand-secondary:hover {
+    border-color: #333333;
+    color: #000000;
+    transform: translateY(-1px);
+  }
+
+  .section-title {
+    font-size: 2.25rem;
+    font-weight: 500;
+    color: #000000;
+    margin-bottom: 2rem;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #fdfbf8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #d9d9d9;
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #7b7b7a;
+}
+
+/* Apple-style greeting animation */
+@keyframes greetingIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.85) translateY(10px);
+    filter: blur(8px);
+  }
+  50% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-greeting-in {
+  animation: greetingIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-fade-in { animation: fadeIn 0.8s ease forwards; }
+.animate-slide-up { animation: slideUp 0.6s ease forwards; }
+.animate-float { animation: float 3s ease-in-out infinite; }
+
+/* Orbit spin for tech icons */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes counterSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(-360deg); }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+.animate-counter-spin {
+  animation: counterSpin 20s linear infinite;
+}
+
+/* Orbit Ring Responsive Layout */
+.orbit-container {
+  --orbit-radius: 120px;
+  --orbit-item-margin: -22px;
+  --profile-size: 176px;
+}
+
+@media (min-width: 360px) {
+  .orbit-container {
+    --orbit-radius: 145px;
+    --profile-size: 224px;
+  }
+}
+
+@media (min-width: 768px) {
+  .orbit-container {
+    --orbit-radius: 240px;
+    --orbit-item-margin: -24px;
+    --profile-size: 288px;
+  }
+}
+
+/* 3D Flip Card Utilities */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
