@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 
 const greetings = [
@@ -58,6 +58,17 @@ export default function SiteIntroOverlay({ onComplete }) {
     return () => clearInterval(interval);
   }, [phase]);
 
+  const finishIntro = useCallback(() => {
+    setPhase((currentPhase) => {
+      if (currentPhase === 'done' || currentPhase === 'fading') return currentPhase;
+      setTimeout(() => {
+        setPhase('done');
+        if (onComplete) onComplete();
+      }, 600);
+      return 'fading';
+    });
+  }, [onComplete]);
+
   // Phase 2: Start signature video when entering signature phase
   useEffect(() => {
     if (phase === 'signature') {
@@ -82,16 +93,7 @@ export default function SiteIntroOverlay({ onComplete }) {
     return () => {
       if (fallbackTimerRef.current) clearTimeout(fallbackTimerRef.current);
     };
-  }, [phase]);
-
-  const finishIntro = () => {
-    if (phase === 'done' || phase === 'fading') return;
-    setPhase('fading');
-    setTimeout(() => {
-      setPhase('done');
-      if (onComplete) onComplete();
-    }, 600);
-  };
+  }, [phase, finishIntro]);
 
   const handleSkip = () => {
     finishIntro();

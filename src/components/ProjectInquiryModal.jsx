@@ -19,12 +19,19 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialService = 
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     if (initialService) {
       setFormData((prev) => ({ ...prev, service: initialService }));
     }
   }, [initialService]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setErrorMessage('');
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -44,14 +51,29 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialService = 
 
   if (!isOpen) return null;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage('');
 
-    // Simulate submission
-    setTimeout(() => {
+    try {
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to send inquiry.');
+      }
+
       setIsSubmitting(false);
       setIsSubmitted(true);
+
       setTimeout(() => {
         setIsSubmitted(false);
         onClose();
@@ -61,8 +83,14 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialService = 
           service: 'Web Applications',
           message: '',
         });
-      }, 2500);
-    }, 1000);
+      }, 3000);
+    } catch (err) {
+      console.error('Submission failed:', err);
+      setIsSubmitting(false);
+      setErrorMessage(
+        err.message || 'Something went wrong. Please try again or email directly.'
+      );
+    }
   };
 
   const services = [
@@ -181,6 +209,12 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialService = 
                   className="w-full px-3.5 py-2.5 bg-neutral-50 border border-neutral-200 rounded-lg text-neutral-900 text-sm focus:outline-none focus:border-neutral-900 transition-colors placeholder:text-neutral-400 resize-none"
                 />
               </div>
+
+              {errorMessage && (
+                <div className="p-3 bg-red-50 border border-red-200/80 rounded-lg text-red-600 text-xs leading-relaxed">
+                  {errorMessage}
+                </div>
+              )}
 
               <button
                 type="submit"

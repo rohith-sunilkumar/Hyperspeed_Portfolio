@@ -17,6 +17,7 @@
     "lucide-react": "^1.33.0",
     "motion": "^12.42.2",
     "next": "^15.1.7",
+    "nodemailer": "^10.2.1",
     "postprocessing": "^6.38.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
