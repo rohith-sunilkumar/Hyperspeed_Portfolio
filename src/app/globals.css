@@ -4,40 +4,35 @@
 
 @layer base {
   :root {
-    --color-primary: #fdfbf8;
-    --color-secondary: #2d62ff;
-    --color-accent: #ee4b2b;
+    --color-primary: #ffffff;
     --color-neutral-0: #000000;
-    --color-neutral-100: #121212;
-    --color-neutral-300: #333333;
-    --color-neutral-500: #7b7b7a;
-    --color-neutral-400: #999999;
-    --color-neutral-200: #d9d9d9;
-    
-    --radius-sm: 1px;
-    --radius-md: 13px;
-    --radius-lg: 16px;
-    --radius-full: 100px;
+    --color-neutral-100: #0a0a0a;
+    --color-neutral-200: #171717;
+    --color-neutral-300: #262626;
+    --color-neutral-400: #737373;
+    --color-neutral-500: #a3a3a3;
+    --color-neutral-border: #e5e5e5;
   }
 
   html {
     @apply scroll-smooth;
     scroll-padding-top: 5rem;
-    background-color: #fdfbf8;
+    background-color: #ffffff;
+    color: #0a0a0a;
   }
 
   body {
-    background-color: #fdfbf8;
-    color: #333333;
-    font-family: var(--font-plus-jakarta), 'Neue Montreal', 'Inter', system-ui, sans-serif;
+    background-color: #ffffff;
+    color: #0a0a0a;
+    font-family: var(--font-plus-jakarta), 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     min-height: 100vh;
-    overflow-x: clip;
     width: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 500;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
   }
 }
 

@@ -1,12 +1,11 @@
 import { Plus_Jakarta_Sans } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-plus-jakarta',
   display: 'swap',
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700', '800'],
 });
 
 export const metadata = {
@@ -129,24 +128,19 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" className={`${plusJakartaSans.variable}`}>
-      <head>
-        <Script
-          id="schema-person"
+      <body className="bg-[#ffffff] text-[#0a0a0a] font-sans antialiased selection:bg-neutral-900 selection:text-white">
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        <Script
-          id="schema-website"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-        <Script
-          id="schema-service"
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(professionalServiceSchema) }}
         />
-      </head>
-      <body className="bg-[#fdfbf8] text-[#333333] font-sans antialiased overflow-x-clip">
         {children}
       </body>
     </html>
