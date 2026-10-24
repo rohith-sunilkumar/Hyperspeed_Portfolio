@@ -4,7 +4,7 @@
 📍 Palakkad, Kerala, India  
 ✉️ [rohith.sunilkumar09@gmail.com](mailto:rohith.sunilkumar09@gmail.com)  
 📞 +91 95263 21140  
-🔗 [linkedin.com/in/rohithsunilkumar](https://www.linkedin.com/in/rohithsunilkumar)  
+🔗 [linkedin.com/in/rohith-sunilkumar](https://www.linkedin.com/in/rohith-sunilkumar/)  
 🔗 [github.com/rohith-sunilkumar](https://github.com/rohith-sunilkumar)
 
 ---

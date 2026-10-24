@@ -215,7 +215,7 @@ const Hero = () => {
                                     className="text-[#7b7b7a] hover:text-[#2d62ff] transition-colors duration-200" title="GitHub">
                                     <FaGithub size={20} />
                                 </a>
-                                <a href="https://www.linkedin.com/in/rohithsunilkumar" target="_blank" rel="noopener noreferrer"
+                                <a href="https://www.linkedin.com/in/rohith-sunilkumar/" target="_blank" rel="noopener noreferrer"
                                     className="text-[#7b7b7a] hover:text-[#2d62ff] transition-colors duration-200" title="LinkedIn">
                                     <FaLinkedin size={20} />
                                 </a>
@@ -245,7 +245,7 @@ const Hero = () => {
                                     className="text-[#7b7b7a] hover:text-[#2d62ff] transition-colors duration-200" title="GitHub">
                                     <FaGithub size={20} />
                                 </a>
-                                <a href="https://www.linkedin.com/in/rohithsunilkumar" target="_blank" rel="noopener noreferrer"
+                                <a href="https://www.linkedin.com/in/rohith-sunilkumar/" target="_blank" rel="noopener noreferrer"
                                     className="text-[#7b7b7a] hover:text-[#2d62ff] transition-colors duration-200" title="LinkedIn">
                                     <FaLinkedin size={20} />
                                 </a>

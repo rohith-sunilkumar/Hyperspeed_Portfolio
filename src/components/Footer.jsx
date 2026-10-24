@@ -66,7 +66,7 @@ const Footer = () => {
         {
             icon: <FaLinkedin size={16} />,
             name: 'LinkedIn',
-            link: 'https://www.linkedin.com/in/rohithsunilkumar',
+            link: 'https://www.linkedin.com/in/rohith-sunilkumar/',
         },
     ];
 

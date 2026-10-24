@@ -94,7 +94,7 @@ export default function RootLayout({ children }) {
     ],
     sameAs: [
       'https://github.com/rohith-sunilkumar',
-      'https://linkedin.com/in/rohithsunilkumar',
+      'https://linkedin.com/in/rohith-sunilkumar/',
     ],
   };
 

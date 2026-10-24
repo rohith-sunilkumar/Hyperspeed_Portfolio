@@ -244,7 +244,7 @@ export default function ProjectInquiryModal({ isOpen, onClose, initialService = 
               </div>
               <div className="flex items-center gap-3">
                 <a
-                  href="https://www.linkedin.com/in/rohithsunilkumar"
+                  href="https://www.linkedin.com/in/rohith-sunilkumar/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-black transition-colors"

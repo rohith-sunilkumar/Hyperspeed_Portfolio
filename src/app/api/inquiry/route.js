@@ -131,6 +131,8 @@ ${message}
       `,
     };
 
+    const linkedinUrl = process.env.LINKEDIN_URL || 'https://www.linkedin.com/in/rohith-sunilkumar/';
+
     // ─── 2. Confirmation Email (Auto-reply sent to the Client) ───
     const clientMailOptions = {
       from: `"Rohith Sunilkumar" <${emailUser}>`,
@@ -156,8 +158,7 @@ Rohith Sunilkumar
 Full-Stack Software Developer
 Email: ${recipientEmail}
 Website: https://rohithsunilkumar.in
-LinkedIn: https://www.linkedin.com/in/rohithsunilkumar
-GitHub: https://github.com/rohith-sunilkumar
+LinkedIn: ${linkedinUrl}
       `.trim(),
       html: `
         <!DOCTYPE html>
@@ -215,8 +216,7 @@ GitHub: https://github.com/rohith-sunilkumar
               <div class="role">Full-Stack Software Developer • Palakkad, Kerala</div>
               <div class="links">
                 <a href="https://rohithsunilkumar.in">Portfolio</a>
-                <a href="https://www.linkedin.com/in/rohithsunilkumar">LinkedIn</a>
-                <a href="https://github.com/rohith-sunilkumar">GitHub</a>
+                <a href="${linkedinUrl}">LinkedIn</a>
               </div>
             </div>
           </div>
