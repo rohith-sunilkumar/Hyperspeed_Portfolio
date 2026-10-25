@@ -1,0 +1,41 @@
+# Rohith Sunilkumar — Application & Web Developer (Palakkad, Kerala & Worldwide)
+
+> Full-Stack Software Engineer, Web Developer, and Mobile Application Specialist based in Palakkad, Kerala, India. Engineering high-performance web applications, Flutter mobile apps, custom business software, and scalable backend APIs for clients across Palakkad, Kerala, India, and worldwide.
+
+## Quick Facts & Contact (NAP)
+- **Developer / Founder**: Rohith Sunilkumar
+- **Primary Roles**: Web Developer, Application Developer, Full-Stack MERN Engineer, Flutter Mobile Developer
+- **Location**: Palakkad, Kerala 678001, India
+- **Geographic Coordinates**: 10.7867° N, 76.6548° E
+- **Phone**: +91 95263 21140
+- **Email**: rohith.sunilkumar09@gmail.com
+- **Website**: https://rohithsunilkumar.in
+- **LinkedIn**: https://www.linkedin.com/in/rohith-sunilkumar/
+- **GitHub**: https://github.com/rohith-sunilkumar
+- **Operating Hours**: Monday – Saturday, 09:00 AM – 07:00 PM IST
+- **Languages Spoken**: English, Malayalam, Hindi
+
+## Core Services
+- **Web Applications Development**: High-performance, SEO-optimized web applications, client portals, SaaS platforms, and interactive dashboards engineered with React.js, Next.js, Tailwind CSS, and Node.js.
+  - Link: https://rohithsunilkumar.in/services/web-applications
+- **Mobile Applications Development**: Cross-platform iOS and Android mobile applications crafted using Flutter and Dart with native speed, offline sync, and real-time push notifications.
+  - Link: https://rohithsunilkumar.in/services/mobile-applications
+- **Custom Business Software & ERP**: Tailored business tools, inventory management systems, billing engines, CRM platforms, and workflow automation software designed to replace generic off-the-shelf software.
+  - Link: https://rohithsunilkumar.in/services/business-software
+- **Backend Architecture & APIs**: Resilient microservices, RESTful and GraphQL APIs, real-time WebSockets, and database modeling with Node.js, Express.js, MongoDB, PostgreSQL, and AWS/Vercel.
+  - Link: https://rohithsunilkumar.in/services/backend-and-apis
+
+## Service Coverage
+- **Local (Palakkad)**: Available for direct in-person consultation, requirements gathering, and technical advisory across Palakkad town, Chittur, Ottapalam, Mannarkkad, Alathur, and the Coimbatore–Palakkad industrial corridor.
+- **Regional (Kerala & Pan-India)**: On-site and remote development for startups, agencies, and enterprises in Kochi, Thiruvananthapuram, Calicut, Bangalore, Mumbai, and Delhi.
+- **Global**: Full remote engineering for international clients across the United States, United Kingdom, UAE, and Europe with flexible timezone overlap and English fluency.
+
+## Pricing & Engagement Model
+- Project-based fixed milestones starting from ₹15,000 for standard web systems.
+- Dedicated sprint-based technical advisory and monthly retainer models for startups and scaling businesses.
+- Transparent deliverables with direct GitHub repository access, staging deployments, and automated testing.
+
+## Documentation & Full Information
+- Full Specifications: https://rohithsunilkumar.in/llms-full.txt
+- Services Catalog: https://rohithsunilkumar.in/services
+- Sitemap: https://rohithsunilkumar.in/sitemap.xml

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaPaperPlane, FaCheckCircle } from 'react-icons/fa';
 
 const Footer = () => {
@@ -22,18 +23,37 @@ const Footer = () => {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
+        setSubmitStatus(null);
 
-        // Simulate form submission
-        setTimeout(() => {
+        try {
+            const res = await fetch('/api/inquiry', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    projectType: 'Web & Application Development (Footer Contact)',
+                    budget: 'Flexible',
+                    description: formData.message,
+                }),
+            });
+
+            const data = await res.json();
+            if (res.ok && data.success) {
+                setSubmitStatus('success');
+                setFormData({ name: '', email: '', message: '' });
+                setTimeout(() => setSubmitStatus(null), 5000);
+            } else {
+                setSubmitStatus('error');
+            }
+        } catch {
+            setSubmitStatus('error');
+        } finally {
             setIsSubmitting(false);
-            setSubmitStatus('success');
-            setFormData({ name: '', email: '', message: '' });
-
-            setTimeout(() => setSubmitStatus(null), 3000);
-        }, 1500);
+        }
     };
 
     const contactInfo = [
@@ -45,15 +65,15 @@ const Footer = () => {
         },
         {
             icon: <FaPhone />,
-            title: 'Phone',
+            title: 'Phone / WhatsApp',
             value: '+91 95263 21140',
             link: 'tel:+919526321140',
         },
         {
             icon: <FaMapMarkerAlt />,
-            title: 'Location',
-            value: 'Palakkad, Kerala',
-            link: null,
+            title: 'Location / Studio',
+            value: 'Palakkad, Kerala 678001, India',
+            link: 'https://maps.google.com/?q=Palakkad,+Kerala+678001',
         },
     ];
 
@@ -222,9 +242,44 @@ const Footer = () => {
                                     </div>
                                 </div>
                             )}
+
+                            {/* Error Message Banner */}
+                            {submitStatus === 'error' && (
+                                <div className="p-3.5 bg-[#1a0f0f] border border-[#ee4b2b] text-[#ee4b2b] rounded-[13px] text-xs">
+                                    <p className="font-medium">Failed to send message.</p>
+                                    <p className="text-[10px] text-[#999999] mt-0.5">Please contact directly via WhatsApp or phone at +91 95263 21140.</p>
+                                </div>
+                            )}
                         </form>
                     </div>
 
+                </div>
+
+                {/* Local Business Citation & Services Navigation */}
+                <div className="pt-8 border-t border-[#222222] grid grid-cols-1 md:grid-cols-3 gap-8 text-xs text-[#999999]">
+                    <div className="space-y-2">
+                        <span className="font-mono text-[10px] text-[#2d62ff] uppercase tracking-widest block font-medium">Local Software Engineering</span>
+                        <p className="leading-relaxed text-[#b0b0b0]">
+                            Studio based in <strong className="text-white">Palakkad, Kerala (PIN 678001)</strong>. Designing bespoke web applications, mobile apps, and enterprise software for businesses in Palakkad, across Kerala, India, and global clients.
+                        </p>
+                    </div>
+                    <div className="space-y-2">
+                        <span className="font-mono text-[10px] text-[#2d62ff] uppercase tracking-widest block font-medium">Specialized Services</span>
+                        <ul className="space-y-1.5">
+                            <li><Link href="/services/web-applications" className="hover:text-white transition-colors">Web Applications Development</Link></li>
+                            <li><Link href="/services/mobile-applications" className="hover:text-white transition-colors">Mobile Applications (Flutter iOS & Android)</Link></li>
+                            <li><Link href="/services/business-software" className="hover:text-white transition-colors">Custom Business Software & ERP</Link></li>
+                            <li><Link href="/services/backend-and-apis" className="hover:text-white transition-colors">Backend & Scalable APIs</Link></li>
+                        </ul>
+                    </div>
+                    <div className="space-y-2">
+                        <span className="font-mono text-[10px] text-[#2d62ff] uppercase tracking-widest block font-medium">Business Hours & Direct Line</span>
+                        <p className="leading-relaxed">
+                            <span className="text-[#fdfbf8] font-medium">Hours:</span> Mon – Sat: 09:00 AM – 07:00 PM IST<br />
+                            <span className="text-[#fdfbf8] font-medium">Direct Line:</span> <a href="tel:+919526321140" className="text-[#2d62ff] hover:underline">+91 95263 21140</a><br />
+                            <span className="text-[#fdfbf8] font-medium">Email:</span> <a href="mailto:rohith.sunilkumar09@gmail.com" className="hover:text-white transition-colors">rohith.sunilkumar09@gmail.com</a>
+                        </p>
+                    </div>
                 </div>
 
                 {/* Bottom row: Divider, Vincent Van Gogh Quote & Copyright */}

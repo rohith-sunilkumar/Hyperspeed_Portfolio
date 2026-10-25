@@ -1,5 +1,26 @@
 # https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
+Disallow: /api/
 
-Sitemap: https://rohithsunilkumar.com/sitemap.xml
+# Explicitly invite AI search crawlers (ChatGPT, Perplexity, Claude, Gemini, Apple)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://rohithsunilkumar.in/sitemap.xml
+Host: https://rohithsunilkumar.in

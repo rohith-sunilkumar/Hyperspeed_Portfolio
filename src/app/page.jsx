@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'motion/react';
 import ProjectInquiryModal from '../components/ProjectInquiryModal';
 import SiteIntroOverlay from '../components/SiteIntroOverlay';
@@ -109,24 +110,28 @@ export default function Home() {
     {
       num: '01',
       title: 'Web Applications',
+      slug: 'web-applications',
       desc: 'CRMs, dashboards, portals and SaaS platforms.',
       parallaxY: card1Y,
     },
     {
       num: '02',
       title: 'Mobile Applications',
+      slug: 'mobile-applications',
       desc: 'Android and iOS applications with Flutter.',
       parallaxY: card2Y,
     },
     {
       num: '03',
       title: 'Business Software',
+      slug: 'business-software',
       desc: 'Sales, operations, bookings and workflow systems.',
       parallaxY: card3Y,
     },
     {
       num: '04',
       title: 'Backend & APIs',
+      slug: 'backend-and-apis',
       desc: 'Secure APIs, databases, integrations and automation.',
       parallaxY: card4Y,
     },
@@ -296,12 +301,21 @@ export default function Home() {
         </motion.div>
 
         <div className="w-full relative z-10">
-          <motion.span
-            style={{ y: servicesHeaderY }}
-            className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] text-neutral-600 block mb-6"
-          >
-            WHAT I BUILD
-          </motion.span>
+          <div className="flex items-center justify-between mb-6">
+            <motion.span
+              style={{ y: servicesHeaderY }}
+              className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.14em] text-neutral-600 block"
+            >
+              WHAT I BUILD
+            </motion.span>
+            <Link
+              href="/services"
+              className="text-xs font-semibold text-neutral-950 hover:text-neutral-500 transition-colors flex items-center gap-1.5"
+            >
+              <span>Explore all services</span>
+              <span>→</span>
+            </Link>
+          </div>
 
           {/* 4 Cards Grid with Staggered Parallax Transitions */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 w-full">
@@ -309,20 +323,48 @@ export default function Home() {
               <motion.div
                 key={card.num}
                 style={{ y: card.parallaxY }}
-                onClick={() => openInquiry(card.title)}
-                className="bg-[#0f0f0f] border border-neutral-900 rounded-lg p-6 md:p-7 flex flex-col justify-between min-h-[210px] md:min-h-[250px] hover:border-neutral-700 hover:-translate-y-1 transition-all duration-300 cursor-pointer group shadow-sm"
+                className="h-full"
               >
-                <div>
-                  <span className="text-[11px] sm:text-xs font-mono text-neutral-400 block mb-6">
-                    {card.num}
-                  </span>
-                  <h3 className="text-base md:text-lg font-bold text-white tracking-tight mb-2.5 group-hover:text-neutral-200 transition-colors">
-                    {card.title}
-                  </h3>
-                </div>
-                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
-                  {card.desc}
-                </p>
+                <Link
+                  href={`/services/${card.slug}`}
+                  className="bg-[#0f0f0f] border border-neutral-900 rounded-lg p-6 md:p-7 flex flex-col justify-between h-full min-h-[230px] md:min-h-[260px] hover:border-neutral-700 hover:-translate-y-1 transition-all duration-300 group shadow-sm block text-left"
+                >
+                  <div>
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="text-[11px] sm:text-xs font-mono text-neutral-400">
+                        {card.num}
+                      </span>
+                      <span className="text-[11px] font-mono text-neutral-500 group-hover:text-white transition-colors flex items-center gap-1">
+                        <span>Details</span>
+                        <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+                      </span>
+                    </div>
+                    <h3 className="text-base md:text-lg font-bold text-white tracking-tight mb-2.5 group-hover:text-neutral-200 transition-colors">
+                      {card.title}
+                    </h3>
+                    <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                      {card.desc}
+                    </p>
+                  </div>
+                  <div className="pt-4 flex items-center justify-between border-t border-neutral-900/60 mt-4 text-[11px]">
+                    <span className="text-neutral-300 group-hover:text-white font-medium transition-colors flex items-center gap-1">
+                      <span>View individual page</span>
+                      <span className="group-hover:translate-x-1 transition-transform">→</span>
+                    </span>
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        openInquiry(card.title);
+                      }}
+                      className="font-mono text-neutral-400 hover:text-white px-2 py-0.5 rounded border border-neutral-800 hover:border-neutral-600 transition-colors cursor-pointer"
+                      title="Quick Inquiry"
+                    >
+                      Inquire
+                    </button>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>
@@ -423,64 +465,129 @@ export default function Home() {
             <span>Tell me what you&apos;re building</span>
             <span className="group-hover:translate-x-1.5 transition-transform duration-200">→</span>
           </button>
+
+          {/* Direct Local & Global Contact Strip for Crawlers, AIs & Clients */}
+          <div className="mt-8 pt-6 border-t border-neutral-200/60 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs sm:text-sm text-neutral-600">
+            <span className="inline-flex items-center gap-1.5 font-medium text-neutral-900">
+              📍 Palakkad, Kerala 678001
+            </span>
+            <span className="text-neutral-300">•</span>
+            <a href="tel:+919526321140" className="hover:text-neutral-950 transition-colors font-medium">
+              📞 +91 95263 21140
+            </a>
+            <span className="text-neutral-300">•</span>
+            <a href="mailto:rohith.sunilkumar09@gmail.com" className="hover:text-neutral-950 transition-colors">
+              ✉️ rohith.sunilkumar09@gmail.com
+            </a>
+            <span className="text-neutral-300">•</span>
+            <span className="text-neutral-500">Serving Palakkad, Kerala, India & Worldwide</span>
+          </div>
         </motion.div>
 
         {/* Bottom divider and footer */}
         <div className="w-full relative z-10">
           <div className="border-t border-neutral-200/90 mb-6 sm:mb-8 w-full" />
 
-          <footer className="flex flex-col sm:flex-row items-start sm:items-baseline justify-between gap-6 text-neutral-500 w-full pb-2">
+          <footer className="grid grid-cols-1 md:grid-cols-12 gap-8 text-neutral-500 w-full pb-4">
             {/* Left Column */}
-            <div className="space-y-1">
+            <div className="md:col-span-5 space-y-1.5">
               <h4 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-neutral-950">
                 ROHITH SUNILKUMAR
               </h4>
-              <p className="text-xs sm:text-sm text-neutral-500">
-                Full-Stack Developer building custom software for businesses.
+              <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed">
+                Full-Stack Application & Web Developer based in <strong className="text-neutral-900 font-semibold">Palakkad, Kerala (PIN 678001)</strong>. Designing bespoke web applications, mobile apps, and business software for local enterprises and global clients.
               </p>
-              <p className="text-[11px] sm:text-xs text-neutral-400 pt-2">
-                © 2026 Rohith Sunilkumar
+              <div className="flex items-center gap-4 pt-2 text-xs text-neutral-500">
+                <a
+                  href="https://www.linkedin.com/in/rohith-sunilkumar/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-neutral-950 transition-colors underline"
+                >
+                  LinkedIn
+                </a>
+                <a
+                  href="https://github.com/rohith-sunilkumar"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-neutral-950 transition-colors underline"
+                >
+                  GitHub
+                </a>
+                <a
+                  href="/llms.txt"
+                  target="_blank"
+                  className="font-mono text-[11px] text-neutral-400 hover:text-neutral-800"
+                >
+                  llms.txt
+                </a>
+              </div>
+              <p className="text-[11px] text-neutral-400 pt-1">
+                © 2026 Rohith Sunilkumar. All rights reserved.
               </p>
             </div>
 
-            {/* Right Column: Navigation Links */}
-            <div className="flex items-center gap-6 sm:gap-8 text-xs sm:text-sm">
-              <a
-                href="#home"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToTop();
-                }}
-                className="hover:text-neutral-950 transition-colors cursor-pointer"
-              >
-                Home
-              </a>
-              <a
-                href="#services"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('services');
-                }}
-                className="hover:text-neutral-950 transition-colors cursor-pointer"
-              >
-                Services
-              </a>
-              <a
-                href="#about"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollToSection('about');
-                }}
-                className="hover:text-neutral-950 transition-colors cursor-pointer"
-              >
-                About
-              </a>
-              <button
-                onClick={() => openInquiry()}
-                className="hover:text-neutral-950 transition-colors cursor-pointer"
-              >
-                Contact
-              </button>
+            {/* Middle Column: Services */}
+            <div className="md:col-span-4 space-y-1.5 text-xs">
+              <span className="font-semibold text-neutral-900 block uppercase tracking-wider text-[11px]">Specialized Services</span>
+              <ul className="space-y-1 text-neutral-600">
+                <li>
+                  <Link href="/services/web-applications" className="hover:text-neutral-950 transition-colors">
+                    Web Applications Development
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/mobile-applications" className="hover:text-neutral-950 transition-colors">
+                    Mobile Applications (Flutter)
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/business-software" className="hover:text-neutral-950 transition-colors">
+                    Custom Business Software & ERP
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/services/backend-and-apis" className="hover:text-neutral-950 transition-colors">
+                    Backend & Scalable APIs
+                  </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Right Column: Navigation */}
+            <div className="md:col-span-3 flex flex-col gap-2 text-xs">
+              <span className="font-semibold text-neutral-900 block uppercase tracking-wider text-[11px]">Navigation</span>
+              <div className="flex flex-col gap-1.5 text-neutral-600">
+                <a
+                  href="#home"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToTop();
+                  }}
+                  className="hover:text-neutral-950 transition-colors cursor-pointer"
+                >
+                  Home
+                </a>
+                <Link href="/services" className="hover:text-neutral-950 transition-colors">
+                  Services Overview
+                </Link>
+                <a
+                  href="#about"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToSection('about');
+                  }}
+                  className="hover:text-neutral-950 transition-colors cursor-pointer"
+                >
+                  About
+                </a>
+                <button
+                  onClick={() => openInquiry()}
+                  className="text-left hover:text-neutral-950 transition-colors cursor-pointer"
+                >
+                  Start a Project
+                </button>
+              </div>
             </div>
           </footer>
         </div>
